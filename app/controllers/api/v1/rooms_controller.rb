@@ -6,7 +6,7 @@ module API
       skip_before_action :verify_authenticity_token
 
       def index
-        render status: :ok, json: resource_serializer.new(Room.all.order_from_last)
+        render status: :ok, json: resource_serializer.new(Room.all.order_from_last.limit(10))
       end
 
       def show
