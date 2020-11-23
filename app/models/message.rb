@@ -8,4 +8,6 @@ class Message < ApplicationRecord
   belongs_to :user
   
   validates_presence_of :text
+
+  scope :order_from_last, -> { order(id: :desc) }
 end

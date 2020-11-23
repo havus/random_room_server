@@ -9,8 +9,7 @@ module API
         new_message = Message.new(permitted_params)
 
         if new_message.save
-          room = Room.find(1)
-          RoomChannel.broadcast_to(room, new_message)
+          RoomChannel.broadcast_to(new_message.room, new_message)
 
           render json: {}, status: :ok
         else

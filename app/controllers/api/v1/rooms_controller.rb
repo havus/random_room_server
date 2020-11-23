@@ -10,8 +10,9 @@ module API
       end
 
       def show
-        chat_room = Room.first
-        render json: chat_room, include: [:messages]
+        chat_room = Room.find params[:id]
+
+        render status: :ok, json: resource_serializer.new(chat_room)
       end
 
       def create

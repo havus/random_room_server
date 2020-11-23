@@ -4,7 +4,7 @@
 # t.string "name"
 
 class Room < ApplicationRecord
-  has_many :messages, class_name: 'Message', foreign_key: :room_id
+  has_many :messages, -> { order_from_last }, class_name: 'Message', foreign_key: :room_id
   
   validates_presence_of :name
 
